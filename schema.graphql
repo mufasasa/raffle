@@ -1,0 +1,27 @@
+type NewAuctionWinner @entity {
+  id: ID!
+  bidderID: BigInt! # uint256
+}
+
+type NewBid @entity {
+  id: ID!
+  bidder: Bytes! # address
+  bidderID: BigInt! # uint256
+  bidAmount: BigInt! # uint256
+}
+
+type NewGoldenTicketWinner @entity {
+  id: ID!
+  bidderID: BigInt! # uint256
+}
+
+type NewRaffleWinner @entity {
+  id: ID!
+  bidderID: BigInt! # uint256
+}
+
+type OwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
