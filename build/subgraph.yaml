@@ -1,0 +1,36 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: arbitrum-one
+    source:
+      address: "0xf53d383525117d1f51bf234966e39bd1508a5948"
+      abi: Contract
+      startBlock: 16977962
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - NewAuctionWinner
+        - NewBid
+        - NewGoldenTicketWinner
+        - NewRaffleWinner
+        - OwnershipTransferred
+      abis:
+        - name: Contract
+          file: Contract/abis/Contract.json
+      eventHandlers:
+        - event: NewAuctionWinner(uint256)
+          handler: handleNewAuctionWinner
+        - event: NewBid(address,uint256,uint256)
+          handler: handleNewBid
+        - event: NewGoldenTicketWinner(uint256)
+          handler: handleNewGoldenTicketWinner
+        - event: NewRaffleWinner(uint256)
+          handler: handleNewRaffleWinner
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: Contract/Contract.wasm

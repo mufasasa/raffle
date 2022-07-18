@@ -18,6 +18,8 @@ export function handleNewAuctionWinner(event: NewAuctionWinnerEvent): void {
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
   entity.bidderID = event.params.bidderID
+  entity.block = event.block.number
+  entity.timestamp = event.block.timestamp
   entity.save()
 }
 
@@ -28,6 +30,8 @@ export function handleNewBid(event: NewBidEvent): void {
   entity.bidder = event.params.bidder
   entity.bidderID = event.params.bidderID
   entity.bidAmount = event.params.bidAmount
+  entity.block = event.block.number
+  entity.timestamp = event.block.timestamp
   entity.save()
 }
 
@@ -38,6 +42,8 @@ export function handleNewGoldenTicketWinner(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
   entity.bidderID = event.params.bidderID
+  entity.block = event.block.number
+  entity.timestamp = event.block.timestamp
   entity.save()
 }
 
@@ -46,6 +52,8 @@ export function handleNewRaffleWinner(event: NewRaffleWinnerEvent): void {
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
   entity.bidderID = event.params.bidderID
+  entity.block = event.block.number
+  entity.timestamp = event.block.timestamp
   entity.save()
 }
 
@@ -57,5 +65,7 @@ export function handleOwnershipTransferred(
   )
   entity.previousOwner = event.params.previousOwner
   entity.newOwner = event.params.newOwner
+  entity.block = event.block.number
+  entity.timestamp = event.block.timestamp
   entity.save()
 }
